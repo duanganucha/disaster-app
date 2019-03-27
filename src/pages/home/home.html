@@ -1,14 +1,42 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar style="text-align:center">
+    <ion-buttons start>
+      <button ion-button icon-only>
+        <ion-icon name="barcode"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>
-      Ionic Blank
+      Scan Code
     </ion-title>
+    <ion-buttons end (click)="getTest()">
+      <button ion-button icon-only>
+        <ion-icon name="qr-scanner" ></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+    <div padding (click)="scanCode()" *ngIf="!scannedCode">
+    <img src="../../assets/imgs/take-qrcode.png" />
+    </div>
+
+  <ion-card *ngIf="scannedCode">
+    <ion-card-content>
+      Result from Scan : {{ scannedCode }}
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="barcodeFirebase">
+    <ion-card *ngFor="let item of barcodeFirebase">
+      <img [src]="item.image" />
+      <div class="card-title">QR-code : {{ item.qrNumber }}</div>
+      <div class="card-subtitle">ชื่อ : {{ item.name_first }}</div>
+      <div class="card-subtitle">สกุล : {{ item.name_last }}</div>
+      <button ion-button [color]="colorChange" large block round (click)="editItem(item)">เลือก</button>
+    </ion-card>
+  </div>
+
 </ion-content>

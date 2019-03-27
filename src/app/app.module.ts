@@ -1,3 +1,4 @@
+import { ImageModalPage } from './../pages/image-modal/image-modal';
 import { CallPage } from './../pages/call/call';
 import { ListsPage } from './../pages/lists/lists';
 import { TabsPage } from './../pages/tabs/tabs';
@@ -10,9 +11,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { NativeAudio } from '@ionic-native/native-audio';
+
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { EditPage } from '../pages/edit/edit';
+
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { Camera } from '@ionic-native/camera';
 
 
 export const firebaseConfig = {
@@ -31,14 +40,18 @@ export const firebaseConfig = {
     HomePage,
     TabsPage,
     ListsPage,
-    CallPage
+    CallPage,
+    EditPage,
+    ImageModalPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,12 +59,17 @@ export const firebaseConfig = {
     HomePage,
     TabsPage,
     ListsPage,
-    CallPage
+    CallPage,
+    EditPage,
+    ImageModalPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
+    BarcodeScanner,
+    NativeAudio,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

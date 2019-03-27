@@ -1,0 +1,175 @@
+<!--
+  Generated template for the EditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar [color]="colorChange" style="text-align:center">
+    <ion-title>
+      Scan Code
+    </ion-title>
+    <ion-buttons end (click)="takePhoto()">
+      <button ion-button icon-only>
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <img src="{{item.image}}" class="thumb-img" imageViewer style="height: 200px; width: 100%; " />
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Triage</ion-label>
+      <ion-select [(ngModel)]="triage" (ionChange)="onChangeTriage()">
+        <ion-option value="Resuscitation">Resuscitation</ion-option>
+        <ion-option value="Emergency">Emergency</ion-option>
+        <ion-option value="Urgency">Urgency</ion-option>
+        <ion-option value="Semi-urgency">Semi-urgency</ion-option>
+        <ion-option value="Non-urgency">Non-urgency</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <p style="text-align: center">{{age}}</p>
+  <ion-item>
+    <ion-range min="1" max="100" step="2" snaps="true" [(ngModel)]="age" color="danger">
+      <ion-icon range-left small color="danger" name="man"></ion-icon>
+      <ion-icon range-right color="danger" name="man"></ion-icon>
+    </ion-range>
+  </ion-item>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>เพศ</ion-label>
+      <ion-select [(ngModel)]="sex">
+        <ion-option value="male">ชาย</ion-option>
+        <ion-option value="female">หญิง</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+      <ion-item>
+        <ion-label>GCS E-V-M : </ion-label>
+        <ion-input type="text" [(ngModel)]="GCS"></ion-input>
+      </ion-item>
+    </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Treatment-AB</ion-label>
+      <ion-select [(ngModel)]="treatmentsAB" multiple="true" cancelText="Cancel" okText="OK">
+        <ion-option value="Suction">Suction</ion-option>
+        <ion-option value="Oral-airway	">Oral airway </ion-option>
+        <ion-option value="EKG">EKG</ion-option>
+        <ion-option value="o2cunular">o2cunular</ion-option>
+        <ion-option value="o2maskbag">o2maskbag</ion-option>
+        <ion-option value="ambubag">Ambubag</ion-option>
+        <ion-option value="ett">ET-Tube</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Treatment-C</ion-label>
+      <ion-select [(ngModel)]="treatmentsC" multiple="true" cancelText="Cancel" okText="OK">
+        <ion-option value="NSS">NSS</ion-option>
+        <ion-option value="RLS">RLS </ion-option>
+        <ion-option value="5%DN/2">5%DN/2</ion-option>
+        <ion-option value="on-locked">on locked</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Treatment-D</ion-label>
+      <ion-select [(ngModel)]="treatmentsD" multiple="true" cancelText="Cancel" okText="OK">
+        <ion-option value="splint-wood">ไม้ดาม</ion-option>
+        <ion-option value="LSB">Long Spinal Board</ion-option>
+        <ion-option value="collar">Hard collar</ion-option>
+        <ion-option value="KED">KED</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>อวัยวะ</ion-label>
+      <ion-select [(ngModel)]="organ" multiple="true" cancelText="Cancel" okText="OK">
+        <ion-option value="Head-neck">Head/neck</ion-option>
+        <ion-option value="Face">Face</ion-option>
+        <ion-option value="Spine-back">Spine/back</ion-option>
+        <ion-option value="Chest-Clavicle">Chest-Clavicle</ion-option>
+        <ion-option value="Abdomen">Abdomen</ion-option>
+        <ion-option value="Pelvis">Pelvis</ion-option>
+        <ion-option value="Extremities">Extremities</ion-option>
+        <ion-option value="Multiple-Injury-back">Multiple Injury back</ion-option>
+        <ion-option value="External-body-surface	">External body surface </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>บาดแผล</ion-label>
+      <ion-select [(ngModel)]="wound" multiple="true" cancelText="Cancel" okText="OK">
+        <ion-option value="Cut-Laceration">Cut/Laceration</ion-option>
+        <ion-option value="Abrasion">Abrasion</ion-option>
+        <ion-option value="Contusion">Contusion</ion-option>
+        <ion-option value="Burn">Burn</ion-option>
+        <ion-option value="Stab-Wound">Stab Wound </ion-option>
+        <ion-option value="Amputate">Amputate</ion-option>
+        <ion-option value="GSW">GSW</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>ชื่อ : </ion-label>
+      <ion-input type="text" [(ngModel)]="name_first"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>สกุล</ion-label>
+      <ion-input type="text" [(ngModel)]="name_last"></ion-input>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-list>
+    <ion-item>
+      <ion-label>ส่งโรงพยาบาล</ion-label>
+      <ion-select [(ngModel)]="destination" cancelText="Cancel" okText="OK">
+        <ion-option value="ศรีสะเกษ">ศรีสะเกษ</ion-option>
+        <ion-option value="วังหิน">วังหิน</ion-option>
+        <ion-option value="ประชารักษ์">ประชารักษ์</ion-option>
+        <ion-option value="กันทรารมย์">กันทรารมย์</ion-option>
+        <ion-option value="อุทุมพรพิสัย">อุทุมพรพิสัย</ion-option>
+        <ion-option value="pcu1">pcu1</ion-option>
+        <ion-option value="pcu2">pcu2 </ion-option>
+        <ion-option value="pcu3">pcu3</ion-option>
+        <ion-option value="pcu4">pcu4</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Status</ion-label>
+      <ion-select [(ngModel)]="status" cancelText="Cancel" okText="OK">
+        <ion-option value="wait-refer">รอส่ง</ion-option>
+        <ion-option value="on-transfer">กำลังนำส่ง</ion-option>
+        <ion-option value="complete">นำส่งเสร็จสิ้น</ion-option>
+        <ion-option value="dead">dead</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+
+
+</ion-content>
+
+<ion-footer (click)="saveDate()" style="text-align:center">
+  <ion-toolbar [color]="colorChange">
+    <ion-title>Save</ion-title>
+  </ion-toolbar>
+</ion-footer>

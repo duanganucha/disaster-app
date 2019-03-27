@@ -1,0 +1,10 @@
+<ion-content fullscreen>
+ 
+
+    <ion-slides class="image-slider" loop="true" slidesPerView="2">
+        <ion-slide *ngFor="let img of [1,2,3]">
+          <img src="../../assets/imgs/{{ img }}.jpg" class="thumb-img" imageViewer />
+        </ion-slide>
+      </ion-slides>
+   
+  </ion-content>
