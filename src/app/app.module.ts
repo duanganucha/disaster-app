@@ -1,3 +1,6 @@
+import { CallPage } from './../pages/call/call';
+import { ListsPage } from './../pages/lists/lists';
+import { TabsPage } from './../pages/tabs/tabs';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -25,7 +28,10 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    TabsPage,
+    ListsPage,
+    CallPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,10 @@ export const firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    TabsPage,
+    ListsPage,
+    CallPage
   ],
   providers: [
     StatusBar,
